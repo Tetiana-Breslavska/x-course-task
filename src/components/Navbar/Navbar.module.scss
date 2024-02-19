@@ -1,0 +1,13 @@
+@import '../../styles/var.scss';
+
+.navbar{
+    background-color: $brandColor;
+    color: $blackColor;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 25px;
+    
+    p, a{
+        margin:0 15px;
+    }
+}

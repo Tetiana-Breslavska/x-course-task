@@ -1,0 +1,13 @@
+@import "../../styles/var.scss";
+
+.specificBook {
+  background-image: url(/images/abstract-background-open-books-glare-of-light-and-bokeh_418128-463.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: $blackColor;
+  .specificBook_Wrapper {
+    // color: $brandColor;
+    display: flex;
+    justify-content: space-around;
+  }
+}

@@ -1,0 +1,23 @@
+@import '../../styles/var.scss';
+
+.cartEmpty{
+    text-align: center;
+    background-color: antiquewhite;
+    .button{
+        display: block;
+        width: 200px;
+        padding: 20px 20px;
+        border: 2px solid $blackColor;
+        background-color: $brandColor;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .cartIcon{
+        margin-top: 50px 0;
+        font-size: 70px;
+        text-align: center;
+        justify-content: center;
+    }
+}

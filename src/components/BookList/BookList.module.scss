@@ -1,0 +1,17 @@
+@import "../../styles/var.scss";
+
+.bookList {
+  background-image: url(/images/bookcase-dark.jpg);
+  background-repeat: repeat;
+  background-size: contain;
+  min-height: 700px;
+  color: $brandColor;
+
+  .booksList_content {
+    justify-content: space-between;
+
+    .card-body {
+      background-color: #ffd89a;
+    }
+  }
+}
