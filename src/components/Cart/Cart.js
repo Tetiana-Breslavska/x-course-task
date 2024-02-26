@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useUser } from '../../context/use-user';
+import { LocalStorageService, LS_KEYS } from '../../services/localStorage';
 import Navbar from '../Navbar/Navbar';
 import styles from './Cart.module.scss';
 // import BookList from '../BookList/BookList';
@@ -9,21 +10,12 @@ export default function Cart() {
     const { addedBooks, setAddedBooks } = useUser();
     console.log(addedBooks);
 
-    // const handleCountInput = ({value})=>{
-    //     setAddedBooks(prevState => [
-    //         ...prevState,
-    //         { count: value }
-    //     ]);
-    // };
-
     const handleCountInput = (event) => {
         const bookId = + event.target.getAttribute('book-id');
         const newCountValue = + event.target.value;
         if (newCountValue >= 0 && newCountValue <= 42) {
             setAddedBooks(prevState => prevState.map(book => {
-                console.log(book.id === bookId);
                 if (book.id === bookId) {
-                    console.log('Updating count for book with id', bookId);
                     return {
                         ...book,
                         count: newCountValue,
@@ -34,6 +26,15 @@ export default function Cart() {
             }));
         }
     };
+
+    const handleRemove = (event) => {
+        const bookId = + event.target.getAttribute('book-id');
+
+        setAddedBooks(prevState => prevState.filter(book => book.id !== bookId));
+
+    }
+
+
 
 
 
@@ -53,13 +54,13 @@ export default function Cart() {
                 <div className="row" key="cartItems">
                     {addedBooks.map(function (book) {
                         return (
-                            <div className="col-lg-3 col-md-4 col-sm-6 mb-5 d-flex">
-                                <Book book={book} key={book.id} />
+                            <div className="col-lg-3 col-md-4 col-sm-6 mb-5 d-flex" key={book.id}>
+                                <Book book={book} />
                                 <label>
                                     Quantity
                                     <input id="count" type="number" min={1} max={42} value={book.count} book-id={book.id} onChange={handleCountInput} inputMode="numeric" />
                                 </label>
-                                <button>Remove</button>
+                                <button book-id={book.id} onClick={handleRemove}>Remove</button>
                             </div>
                         );
                     })}

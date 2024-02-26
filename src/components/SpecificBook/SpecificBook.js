@@ -8,7 +8,7 @@ import styles from './SpecificBook.module.scss';
 export default function SpecificBook(props) {
     const location = useLocation()
     const book = location.state;
-    const { setAddedBooks } = useUser();
+    const { addedBooks, setAddedBooks } = useUser();
     const bookShortName = book.title.length > 24 ? book.title.slice(0, 24) + '...' : book.title
     const [bookTitle, setBookTitle] = useState(bookShortName);
     const [isTitleHovered, setIsTitleHovered] = useState(false);
@@ -18,7 +18,6 @@ export default function SpecificBook(props) {
     const handleMouseEnter = (event) => {
         setBookTitle(book.title);
         setIsTitleHovered(true);
-
     }
 
     const handleMouseLeave = (event) => {
@@ -32,15 +31,32 @@ export default function SpecificBook(props) {
         }
     }
 
-    const handleButton = () => {
-        if (+count !== 0) {
+    const handleButton = (event) => {
+        const bookId = + event.target.getAttribute('book-id');
+        const foundBook = addedBooks.find(item => item.id === bookId);
+        console.log(foundBook);
+        const currentCount = +count;
+        if (!foundBook) {
             setAddedBooks(prevState => [
                 ...prevState,
-                { ...book, count: +count }
+                { ...book, count: currentCount }
             ]);
-        }
 
+        }
+        else {
+            setAddedBooks(prevState => prevState.map(book => {
+                if (book.id === bookId) {
+                    return {
+                        ...book,
+                        count: book.count + currentCount,
+                    };
+                } else {
+                    return { ...book };
+                }
+            }));
+        }
     }
+
 
     return (
         <>
@@ -75,7 +91,7 @@ export default function SpecificBook(props) {
                             <span>Total price</span>
                             <span id="totalPrice"> {(count * book.price).toFixed(2)}$ </span>
                         </div>
-                        <button onClick={handleButton}>Add to cart</button>
+                        <button onClick={handleButton} book-id={book.id} disabled={+count === 0}>Add to cart</button>
                     </div>
                 </div>
                 <div className={styles.specificBook_descriptionInfa}>
@@ -85,7 +101,5 @@ export default function SpecificBook(props) {
             </section>
 
         </>
-
-
     )
 }
