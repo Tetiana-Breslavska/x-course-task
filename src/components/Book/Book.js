@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom";
 import styles from './Book.module.scss';
-import "../../images/imageNotFound.png"
+import { logDOM } from "@testing-library/react";
+
 
 
 
 export default function Book({ book }) {
-    console.log(book);
+    
+    // console.log(book);
     return (
         <div className="card">
             <div className="card-body">
@@ -15,7 +18,9 @@ export default function Book({ book }) {
                     <br />
                     <span>{book.price}</span>
                 </p>
-                <div className="btn btn-primary button">View</div>
+                <div className="btn btn-primary button">
+                    <Link to="/specificBook" state={ book }>View</Link>
+                </div>
             </div>
         </div>
     )

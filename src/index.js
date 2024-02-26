@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import MyRoutes from "./components/routes/MyRoutes";
+import MyRoutes from "./routes/MyRoutes";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/index.scss';
 

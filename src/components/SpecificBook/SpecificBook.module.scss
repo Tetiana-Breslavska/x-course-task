@@ -5,9 +5,14 @@
   background-repeat: no-repeat;
   background-size: cover;
   color: $blackColor;
+  transition:ease-in-out 0.5s;
   .specificBook_Wrapper {
     // color: $brandColor;
     display: flex;
     justify-content: space-around;
+  }
+  &.hovered{
+    scale: 1.01;
+    
   }
 }

@@ -1,7 +1,17 @@
 import { Link } from "react-router-dom";
+import { useUser } from '../../context/use-user';
 import styles from './Navbar.module.scss';
+import { LocalStorageService } from "../../services/localStorage";
 
 export default function Navbar() {
+    const { user, setUser } = useUser();
+    // console.log(user);
+    
+    const clean = ()=>{
+        LocalStorageService.removeAll();
+        setUser('');
+
+    };
     return (
         <nav className={styles.navbar}>
             <Link to="/cart">
@@ -9,10 +19,9 @@ export default function Navbar() {
             </Link>
             <p>
                 <i className="fa-solid fa-user-large"></i>
-                <span>Username</span>
+                <span className={styles.userName}>{user}</span>
             </p>
-            <Link to="/">Sign-out</Link>
-
+            <Link onClick={clean} to="/">Sign-out</Link>
         </nav>
     )
 }
