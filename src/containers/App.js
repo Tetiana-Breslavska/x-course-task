@@ -6,6 +6,7 @@ import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer';
 
 
+
 function App() {
   const [user, setUser] = useState(LocalStorageService.get(LS_KEYS.USER) || '');
   const [addedBooks, setAddedBooks] = useState(LocalStorageService.get(LS_KEYS.ADDEDBOOKS) || []);

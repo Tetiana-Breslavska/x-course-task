@@ -2,6 +2,7 @@ const LS_KEYS = {
     USER: 'user',
     LOGIN:'login',
     ADDEDBOOKS: 'addedBooks',
+    
 };
 
 class LocalStorageService {

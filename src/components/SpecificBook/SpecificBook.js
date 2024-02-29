@@ -12,7 +12,8 @@ export default function SpecificBook(props) {
     const bookShortName = book.title.length > 24 ? book.title.slice(0, 24) + '...' : book.title
     const [bookTitle, setBookTitle] = useState(bookShortName);
     const [isTitleHovered, setIsTitleHovered] = useState(false);
-    const [count, setCount] = useState(1);
+    const [count, setCount] = useState(book.count || 0);
+    
 
 
     const handleMouseEnter = (event) => {
@@ -34,7 +35,6 @@ export default function SpecificBook(props) {
     const handleButton = (event) => {
         const bookId = + event.target.getAttribute('book-id');
         const foundBook = addedBooks.find(item => item.id === bookId);
-        console.log(foundBook);
         const currentCount = +count;
         if (!foundBook) {
             setAddedBooks(prevState => [
@@ -48,7 +48,7 @@ export default function SpecificBook(props) {
                 if (book.id === bookId) {
                     return {
                         ...book,
-                        count: book.count + currentCount,
+                        count: currentCount <= 42 ? currentCount : 42,
                     };
                 } else {
                     return { ...book };
