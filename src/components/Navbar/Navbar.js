@@ -8,11 +8,19 @@ export default function Navbar() {
     const [ totalCount, setTotalCount ] = useState(0);
     const { user, setUser } = useUser();
     const { addedBooks } = useUser();
-    console.log(addedBooks);
+    const [isEnlarged, setIsEnlarged] = useState(false);
+    const style = {
+        fontSize: isEnlarged ? '16px' : '', 
+        transition: 'font-size 0.5s', 
+    };
 
     useEffect(()=>{
         setTotalCount(addedBooks.reduce((acc, curr) => {return acc + curr.count}, 0));
-        
+        setIsEnlarged(true);
+
+        setTimeout(() => {
+            setIsEnlarged(false);
+        }, 1000);
     }, [addedBooks])
 
     const clean = () => {
@@ -20,13 +28,12 @@ export default function Navbar() {
         setUser('');
     };
 
-
     return (
         <nav className={styles.navbar}>
             <div className='container d-flex justify-content-end'>
                 <Link className={styles.cart_icon} to="/cart">
                     <i className="fa-solid fa-cart-shopping"></i>
-                    <span className={styles.cart_counter} >{totalCount}</span>
+                    <span style={style} className={styles.cart_counter} >{totalCount}</span>
                 </Link>
                 <p>
                     <i className="fa-solid fa-user-large"></i>
