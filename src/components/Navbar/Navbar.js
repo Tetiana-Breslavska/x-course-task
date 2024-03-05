@@ -31,6 +31,9 @@ export default function Navbar() {
     return (
         <nav className={styles.navbar}>
             <div className='container d-flex justify-content-end'>
+                <Link to="/bookList">
+                    <i class="fa-solid fa-book"></i>
+                </Link>
                 <Link className={styles.cart_icon} to="/cart">
                     <i className="fa-solid fa-cart-shopping"></i>
                     <span style={style} className={styles.cart_counter} >{totalCount}</span>

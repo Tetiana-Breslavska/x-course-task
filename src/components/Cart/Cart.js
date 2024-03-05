@@ -4,11 +4,12 @@ import { LocalStorageService, LS_KEYS } from '../../services/localStorage';
 import Navbar from '../Navbar/Navbar';
 import styles from './Cart.module.scss';
 // import BookList from '../BookList/BookList';
-import Book from '../Book/Book';
+// import Book from '../Book/Book';
+import BookInCart from '../BookInCart/BookInCart';
 
 export default function Cart() {
     const { addedBooks, setAddedBooks } = useUser();
-    console.log(addedBooks);
+    // console.log(addedBooks);
 
     const handleCountInput = (event) => {
         const bookId = + event.target.getAttribute('book-id');
@@ -32,60 +33,75 @@ export default function Cart() {
         setAddedBooks(prevState => prevState.filter(book => book.id !== bookId));
     }
 
-    const handleRemoveAll = () =>{
+    const handleRemoveAll = () => {
         console.log('remove all');
         LocalStorageService.remove(LS_KEYS.ADDEDBOOKS, addedBooks);
         setAddedBooks([]);
     }
 
     let totalPrice = 0;
-    
+
     return (
         <>
             <Navbar />
-            {(addedBooks.length === 0) ? (
-                <div className={styles.cartEmpty}>
-                    <div className="container">
-                        <Link to="/bookList" className={styles.button} href="#">Go to catalog</Link>
+            <div className={styles.cart}>
+                <button className={styles.removeAllButton} onClick={handleRemoveAll} disabled={addedBooks.length === 0}>Remove all</button>
+
+                {(addedBooks.length === 0) ? (
+                    <div className={`container pt-5 ${styles.emptyCart}`}>
                         <a className={styles.cartIcon} href="#">
                             <i className="fa-solid fa-cart-shopping"></i>
                         </a>
                         <p>Cart is empty yet ... </p>
                     </div>
-                </div>) : (
-                <div className="row" key="cartItems">
-                    {addedBooks.map(function (book) {
-                        const priceForItem = +(book.count * book.price).toFixed(2);
-                        totalPrice = +(totalPrice + priceForItem).toFixed(2);
-                        return (
-                            <div className="col-lg-3 col-md-4 col-sm-6 mb-5 d-flex" key={book.id}>
-                                <Book book={book} />
-                                <p>
-                                    <span> Price for 1 book</span>
-                                    <span> {book.price}$ </span>
-                                </p>
-                                <label>
-                                    Quantity
-                                    <input id="count" type="number" min={1} max={42} value={book.count} book-id={book.id} onChange={handleCountInput} inputMode="numeric" />
-                                </label>
-                                <p>
-                                    <span> Price</span>
-                                    <span> {priceForItem}$ </span>
-                                </p>
-                                <button book-id={book.id} onClick={handleRemove}>Remove</button>
+                ) : (
+                    <>
+                        <div className="container">
+                            {/* <Link to="/bookList" className={styles.button}>Go to catalog</Link> */}
+                            {/* <div className="row"> */}
+                            {addedBooks.map(function (book) {
+                                const priceForItem = +(book.count * book.price).toFixed(2);
+                                totalPrice = +(totalPrice + priceForItem).toFixed(2);
+                                return (
+                                    // <div className={`d-flex justify-content-between ${styles.}`} >
+                                    <div className={`row p-2 rounded mt-5 ${styles.cart_bookWrapper}`}>
+                                        <div className="col" key={book.id}>
+                                            <BookInCart book={book} />
+                                        </div>
+                                        <div className="col">
+                                            <span> {book.price}$ </span>
+                                        </div>
+                                        <div className="col">
+                                            <input id="count" type="number" min={1} max={42} value={book.count} book-id={book.id} onChange={handleCountInput} inputMode="numeric" />
+
+                                        </div>
+                                        <div className="col">
+                                            <p>
+                                                <span> Price</span>
+                                                <span> {priceForItem}$ </span>
+                                            </p>
+                                        </div>
+                                        <div className="col">
+                                            <button className={styles.removeButton} book-id={book.id} onClick={handleRemove}>Remove</button>
+                                        </div>
+
+
+
+                                    </div>
+                                    // </div>
+                                );
+                            })}
+
+                            <div className={styles.totalPrice}>
+                                Total Price:
+                                <span> {totalPrice}$ </span>
                             </div>
-                        );
-                    })}
-                </div>
-            )
-            
-        }
-            <div>
-                <span>Total Price</span>
-                <span> {totalPrice}$ </span>
+                        </div>
+                        {/* </div> */}
+
+                    </>
+                )}
             </div>
-        
-            <button onClick={handleRemoveAll} disabled={addedBooks.length === 0}>Purchase</button>
         </>
     )
 }

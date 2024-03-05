@@ -1,24 +1,55 @@
-@import '../../styles/var.scss';
+@import "../../styles/var.scss";
 
-.cartEmpty{
-    flex:9;
+.cart {
+  flex: 9;
+  display: flex;
+  flex-direction: column;
+  padding-right: 15px;
+  background: url(../../images/bookcase.png);
+
+  .emptyCart{
+    font-size: 30px;
     text-align: center;
-    background-color: antiquewhite;
-    .button{
-        display: block;
-        width: 200px;
-        padding: 20px 20px;
-        border: 2px solid $blackColor;
-        background-color: $brandColor;
-        border-radius: 5px;
-        text-align: center;
-        text-decoration: none;
-    }
+  }
 
-    .cartIcon{
-        margin-top: 50px 0;
-        font-size: 70px;
-        text-align: center;
-        justify-content: center;
+  button {
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    border: 1px solid $redColor;
+    color: $redColor;
+    border-radius: 4px;
+    background-color: transparent;
+
+    &:hover {
+      color: #ffffff;
+      background-color: $redColor;
     }
+  }
+
+  .cartIcon {
+    margin-top: 50px 0;
+    font-size: 70px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .cart_bookWrapper {
+    margin-bottom: 15px;
+    background: rgba(221, 194, 124, 0.8);
+    font-size: 22px;
+    align-items: center;
+  }
+
+  .totalPrice {
+    font-size: 35px;
+    background: rgba(221, 194, 124, 0.8);
+    border-radius: 4px;
+    text-align:center;
+    margin-bottom: 50px;
+  }
+  .removeAllButton{
+    margin-top: 15px;
+    align-self: flex-end;
+  }
 }
