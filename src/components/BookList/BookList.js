@@ -55,11 +55,11 @@ export default function BookList() {
         <>
             <Navbar />
             <div className={styles.bookList}>
-                <div className="container p-3 book-list-content">
+                <div className="container p-3">
                     <form action="">
-                        <label >
+                        <label>
                             Book:
-                            <input type="text" id="inputSearchByBookName" placeholder="Search by book name" onChange={handleInput} />
+                            <input type="text" placeholder="Search by book name" onChange={handleInput} />
                         </label>
                         <label>
                             Price:
@@ -73,20 +73,19 @@ export default function BookList() {
 
                     </form>
                     <section>
-                        <h1>all books</h1>
-                        <div className="container">
-                            {/* <div className={styles.booksList_content} id="booksListWrapper"> */}
+                        <h1>All books</h1>
+                        <div className={`container ${styles.containerWrap}`}>
                             <div className="row">
                                 {books ? filteredBooksGeneral.map(function (book) {
                                     return (
-                                        <div className="col-lg-3 col-md-4 col-sm-6 mb-5" key={book.id}>
-                                            <Book book={book} />
+                                        <div className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4" key={book.id}>
+                                            <div className="p-3 rounded bg-warning-subtle flex-column h-100">
+                                                <Book book={book} />
+                                            </div>
                                         </div>
                                     );
                                 }) : ""
                                 }
-
-                                {/* </div> */}
                             </div>
                         </div>
                     </section>

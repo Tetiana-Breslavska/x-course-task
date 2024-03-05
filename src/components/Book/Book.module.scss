@@ -1,0 +1,19 @@
+@import "../../styles/var.scss";
+
+.book {
+  box-shadow: $box-shadow;
+  justify-content: center;
+  
+    .book_icon {
+      display: flex;
+      flex-direction: column;
+      // justify-content: center;
+      // align-items: center;
+    }
+
+    .button {
+    display: block;
+    box-shadow: $box-shadow;
+  }
+}
+

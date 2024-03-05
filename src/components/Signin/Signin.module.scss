@@ -1,13 +1,14 @@
 @import "../../styles/var.scss";
 
 .signin_content {
+  flex: 9;
   padding: 20px 0 0;
   background-color: $blackColor;
 
   .signin_content_hero {
     background-image: url(/images/holy-bible-with-rays-light-coming-out-ai-generative.jpg);
     background-size: 600px;
-    min-height: 90vh;
+    height: 75vh;
     background-position: center;
     background-repeat: no-repeat;
 
@@ -46,6 +47,33 @@
         -webkit-box-shadow: 10px 10px 18px 0px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: 10px 10px 18px 0px rgba(0, 0, 0, 0.75);
         box-shadow: 10px 10px 18px 0px rgba(0, 0, 0, 0.75);
+      }
+    }
+  }
+  @media screen and (min-width: 800px) {
+    .signin_content_hero {
+      background-size: 800px;
+      height: 70vh;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    h1 {
+      font-size: 95px;
+    }
+
+    .signin_form {
+      i {
+        font-size: 60px;
+      }
+      label,
+      button,
+      input {
+        font-size: 20px;
+      }
+      
+      button {
+        margin-top: 15px;
+        width: 200px;
       }
     }
   }

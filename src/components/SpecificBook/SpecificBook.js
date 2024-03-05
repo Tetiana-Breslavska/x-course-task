@@ -11,19 +11,19 @@ export default function SpecificBook(props) {
     const { addedBooks, setAddedBooks } = useUser();
     const bookShortName = book.title.length > 24 ? book.title.slice(0, 24) + '...' : book.title
     const [bookTitle, setBookTitle] = useState(bookShortName);
-    const [isTitleHovered, setIsTitleHovered] = useState(false);
+    // const [isTitleHovered, setIsTitleHovered] = useState(false);
     const [count, setCount] = useState(book.count || 0);
-    
+
 
 
     const handleMouseEnter = (event) => {
         setBookTitle(book.title);
-        setIsTitleHovered(true);
+        // setIsTitleHovered(true);
     }
 
     const handleMouseLeave = (event) => {
         setBookTitle(bookShortName);
-        setIsTitleHovered(false);
+        // setIsTitleHovered(false);
     }
 
     const handleCountInput = (event) => {
@@ -41,7 +41,6 @@ export default function SpecificBook(props) {
                 ...prevState,
                 { ...book, count: currentCount }
             ]);
-
         }
         else {
             setAddedBooks(prevState => prevState.map(book => {
@@ -62,42 +61,48 @@ export default function SpecificBook(props) {
         <>
             <Navbar />
             <section className={styles.specificBook}>
-                <div className={styles.specificBook_Wrapper}>
-                    <div className={styles.specificBook_image}>
-                        <img src={book.image || "./imageNotFound.png"}
-                            alt="book" />
+                <div className="container">
+                    <h1>Book</h1>
+                    <div className="row mt-3">
+                        <div className={`col-sm-5 col-md-4 d-flex align-items-center justify-content-center  ${styles.specificBook_image}`}>
+                            <img className="img-fluid" src={book.image || "./imageNotFound.png"}
+                                alt="book" />
+                        </div>
+                        <div className={`col-sm-5 col-md-4 mt-3 ${styles.specificBook_generalInfa}`}>
+                            <h4 
+                                onMouseEnter={handleMouseEnter}
+                                onMouseLeave={handleMouseLeave}>
+                                Book name: <span>{bookTitle}</span>
+                            </h4>
+                            <h4>Book author: <span>{book.author}</span> </h4>
+                            <h4>Book level: <span>{book.level}</span> </h4>
+                            <h4>Book tags: <span>{book.tags.join(', ')}</span></h4>
+                        </div>
+                        <div className={`col-sm-6 col-md-4 ${styles.specificBook_placeToBay}`}>
+                            <div>
+                                <h4>Price:
+                                    <span id="price"> {book.price}$</span>
+                                </h4>
+                            </div>
+                            <div>
+                                <h4>Count:
+                                    <input id="count" type="number" min={1} max={42} value={count} onChange={handleCountInput} inputMode="numeric" />
+                                </h4>
+                            </div>
+                            <div>
+                                <h4>Total price:
+                                    <span id="totalPrice"> {(count * book.price).toFixed(2)}$</span>
+                                </h4>
+                            </div>
+                            <button className={`btn btn-outline-danger ${styles.button}`} onClick={handleButton} book-id={book.id} disabled={+count === 0}>Add to cart</button>
+                        </div>
                     </div>
-                    <div className={styles.specificBook_generalInfa}>
-                        <p className={`${styles.specificBook} ${isTitleHovered ? styles.hovered : ''}`}
-                            onMouseEnter={handleMouseEnter}
-                            onMouseLeave={handleMouseLeave}>
-                            Book name:
-                            <span>{bookTitle}</span>
-                        </p>
-                        <p>Book author: <span>{book.author}</span></p>
-                        <p>Book level: <span>{book.level}</span></p>
-                        <p>Book tags: <span>{book.tags}</span></p>
-                    </div>
-                    <div className={styles.specificBook_placeToBay}>
-                        <div>
-                            <span>price</span>
-                            <span id="price"> {book.price}$</span>
-                        </div>
-                        <div>
-                            <span>Count</span>
-                            <input id="count" type="number" min={1} max={42} value={count} onChange={handleCountInput} inputMode="numeric" />
-                        </div>
-                        <div>
-                            <span>Total price</span>
-                            <span id="totalPrice"> {(count * book.price).toFixed(2)}$ </span>
-                        </div>
-                        <button onClick={handleButton} book-id={book.id} disabled={+count === 0}>Add to cart</button>
+                    <div className={styles.specificBook_descriptionInfa}>
+                        <h4>Description</h4>
+                        <p>{book.description}</p>
                     </div>
                 </div>
-                <div className={styles.specificBook_descriptionInfa}>
-                    <span>Description</span>
-                    <p>{book.description}</p>
-                </div>
+
             </section>
 
         </>

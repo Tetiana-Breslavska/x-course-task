@@ -1,14 +1,42 @@
-@import '../../styles/var.scss';
+@import "../../styles/var.scss";
 
-.navbar{
-    background-color: $brandColor;
-    color: $blackColor;
-    display: flex;
-    justify-content: flex-end;
-    font-size: 25px;
-    
-    p, a{
-        margin:0 15px;
+.navbar {
+  flex: 0.25;
+  background-color: $brandColor;
+  color: $blackColor;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 35px;
+
+  .cart_icon {
+    position: relative;
+
+    .cart_counter {
+      position: absolute;
+      left: 12px;
+      top: 4px;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 2px 4px;
+      color: #dc3545;
+      //   border: 1px solid #dc3545;
+      border-radius: 50%;
     }
-  
+  }
+
+  p,
+  a {
+    margin: 0 15px;
+  }
+
+  @media screen and (max-width: 800px) {
+    font-size: 25px;
+    .cart_icon {
+      .cart_counter {
+        font-size: 12px;
+        left: 7px;
+        top: 1px;
+      }
+    }
+  }
 }

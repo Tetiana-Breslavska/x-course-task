@@ -4,7 +4,7 @@ import { UserProvider } from '../context/use-user';
 import { LocalStorageService, LS_KEYS } from '../services/localStorage';
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer';
-
+import styles from './App.module.scss';
 
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
       addedBooks,
       setAddedBooks
     }}>
-      <div className="App">
+      <div className={styles.app}>
         <Header />
         <Outlet />
         <Footer />

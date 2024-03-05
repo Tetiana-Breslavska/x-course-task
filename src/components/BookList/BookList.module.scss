@@ -6,12 +6,25 @@
   background-size: contain;
   min-height: 700px;
   color: $brandColor;
+  
+  label,
+  select {
+    font-size: 18px;
+  }
 
-  .booksList_content {
-    justify-content: space-between;
-
-    .card-body {
-      background-color: #ffd89a;
-    }
+  input,
+  select {
+    padding: 10px;
+    border-radius: 4px;
+    color: $blackColor;
+    margin: 10px;
+  }
+  form {
+    margin-bottom: 30px;
   }
 }
+
+
+
+
+

@@ -1,6 +1,7 @@
 @import "../../styles/var.scss";
 
 .header {
+  flex: 0.5;
   background-color: $brandColor;
   display: flex;
   justify-content: space-evenly;
