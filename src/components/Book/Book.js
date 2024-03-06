@@ -6,6 +6,8 @@ import { logDOM } from "@testing-library/react";
 
 
 export default function Book({ book }) {
+    
+
     return (
         <div className={`card ${styles.book}`}>
             <div className="card-body">

@@ -42,7 +42,9 @@ export default function Navbar() {
                     <i className="fa-solid fa-user-large"></i>
                     <span className={styles.userName}>{user}</span>
                 </p>
-                <Link onClick={clean} to="/">Sign-out</Link>
+                <Link onClick={clean} to="/">
+                    <i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i>
+                </Link>
             </div>
 
 
