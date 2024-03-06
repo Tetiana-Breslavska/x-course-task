@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useUser } from '../../context/use-user';
+// import { useUser } from '../../context/use-user';
+import { useBooks } from '../../context/use-books';
 import { LocalStorageService, LS_KEYS } from '../../services/localStorage';
 import Navbar from '../Navbar/Navbar';
 import styles from './Cart.module.scss';
@@ -8,7 +9,7 @@ import styles from './Cart.module.scss';
 import BookInCart from '../BookInCart/BookInCart';
 
 export default function Cart() {
-    const { addedBooks, setAddedBooks } = useUser();
+    const { addedBooks, setAddedBooks } = useBooks();
     // console.log(addedBooks);
 
     const handleCountInput = (event) => {

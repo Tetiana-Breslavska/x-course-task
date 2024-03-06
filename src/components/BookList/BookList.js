@@ -3,24 +3,17 @@ import { useState, useEffect } from 'react';
 import styles from './BookList.module.scss';
 import Navbar from '../Navbar/Navbar';
 import Book from '../Book/Book';
+import { useBooks } from '../../context/use-books';
 
 
 export default function BookList() {
-    const [books, setBooks] = useState(null);
+    const {books} = useBooks();
     const [searchByPrice, setSearchByPrice] = useState('');
     const [searchByBookName, setSearchByBookName] = useState('');
     const [filteredBooksByPrice, setFilteredBooksByPrice] = useState([]);
     const [filteredBooksGeneral, setFilteredBooksGeneral] = useState([]);
 
-
-    // Fetch Function 
-    useEffect(() => {
-        fetch('./books.json')
-            .then(res => res.json())
-            .then(data => setBooks(data.books))
-            .catch(err => console.log('error: ', err)
-            );
-    }, []);
+    console.log(books);
 
     useEffect(() => {
         if (books && searchByPrice) {

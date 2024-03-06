@@ -19,7 +19,7 @@ export default function Book({ book }) {
                     <span>{book.price}$</span>
                 </p>
                 <div className={`btn btn-outline-danger ${styles.button}`}>
-                    <Link to="/specificBook" state={ book }>View</Link>
+                    <Link to={`/specificBook/${book.id}`} >View</Link>
                 </div>
             </div>
         </div>

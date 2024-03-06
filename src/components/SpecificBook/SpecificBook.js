@@ -1,20 +1,19 @@
-import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
-import { useUser } from '../../context/use-user';
+import { useParams } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import styles from './SpecificBook.module.scss';
+import { useBooks } from '../../context/use-books';
 
 
 export default function SpecificBook(props) {
-    const location = useLocation()
-    const book = location.state;
-    const { addedBooks, setAddedBooks } = useUser();
+    const { bookId } = useParams();
+    const {books} = useBooks();
+    const book = books.find((book) => +book.id === +bookId);
+    const { addedBooks, setAddedBooks } = useBooks();
     const bookShortName = book.title.length > 24 ? book.title.slice(0, 24) + '...' : book.title
     const [bookTitle, setBookTitle] = useState(bookShortName);
     // const [isTitleHovered, setIsTitleHovered] = useState(false);
     const [count, setCount] = useState(book.count || 0);
-
-
 
     const handleMouseEnter = (event) => {
         setBookTitle(book.title);
@@ -55,7 +54,6 @@ export default function SpecificBook(props) {
             }));
         }
     }
-
 
     return (
         <>

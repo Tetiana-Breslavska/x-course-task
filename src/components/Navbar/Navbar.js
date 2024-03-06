@@ -1,13 +1,14 @@
 import {useState, useEffect} from 'react';
 import { Link } from "react-router-dom";
 import { useUser } from '../../context/use-user';
+import { useBooks } from '../../context/use-books';
 import styles from './Navbar.module.scss';
 import { LocalStorageService } from "../../services/localStorage";
 
 export default function Navbar() {
     const [ totalCount, setTotalCount ] = useState(0);
     const { user, setUser } = useUser();
-    const { addedBooks } = useUser();
+    const { addedBooks } = useBooks();
     const [isEnlarged, setIsEnlarged] = useState(false);
     const style = {
         fontSize: isEnlarged ? '16px' : '', 
