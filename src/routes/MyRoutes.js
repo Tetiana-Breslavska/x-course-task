@@ -20,15 +20,16 @@ export default function MyRoutes() {
             login,
             setLogin,
         }}>
-            <Routes>
-                <Route exact path='/' element={<App />}>
-                    <Route path='/' element={<Signin />} />
+            <Routes >
+                <Route path='/' element={<App />}>
+                    <Route index element={<Signin />} />
                     <Route path='/bookList' element={login ? <BookList /> : <Navigate to={'/'} />} />
-                    <Route path='/specificBook/:bookId' element= {login ? <SpecificBook /> : <Navigate to={'/'} />} />
-                    <Route path='/cart' element= {login ? <Cart /> : <Navigate to={'/'} />} />
+                    <Route path='/specificBook/:bookId' element={login ? <SpecificBook /> : <Navigate to={'/'} />} />
+                    <Route path='/cart' element={login ? <Cart /> : <Navigate to={'/'} />} />
                     <Route path='/*' element={<NotFoundPage />} />
                 </Route>
             </Routes>
+
         </LoginProvider>
     )
 }
