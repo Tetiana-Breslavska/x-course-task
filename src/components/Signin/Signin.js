@@ -31,7 +31,7 @@ export default function Signin() {
         <div className={styles.signin}>
             <h1>BookLand</h1>
             <div className={styles.signin_hero}>
-                <form className={styles.signin_form} onSubmit={handleSubmit} action = './bookList'>
+                <form className={styles.signin_form} onSubmit={handleSubmit} action = '#/bookList'>
                     <i className="fa-solid fa-user-large"></i>
                     <label htmlFor="username">Username:</label>
                     <input id="username" type="text" name="username" placeholder="type your name" value={user} onChange=
