@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useBooks } from '../../context/use-books';
 import Navbar from '../Navbar/Navbar';
 import styles from './SpecificBook.module.scss';
-import { useBooks } from '../../context/use-books';
-
 
 export default function SpecificBook(props) {
     const { bookId } = useParams();
@@ -12,17 +11,14 @@ export default function SpecificBook(props) {
     const { addedBooks, setAddedBooks } = useBooks();
     const bookShortName = book.title.length > 24 ? book.title.slice(0, 24) + '...' : book.title
     const [bookTitle, setBookTitle] = useState(bookShortName);
-    // const [isTitleHovered, setIsTitleHovered] = useState(false);
     const [count, setCount] = useState(book.count || 0);
 
     const handleMouseEnter = (event) => {
         setBookTitle(book.title);
-        // setIsTitleHovered(true);
     }
 
     const handleMouseLeave = (event) => {
         setBookTitle(bookShortName);
-        // setIsTitleHovered(false);
     }
 
     const handleCountInput = (event) => {
@@ -63,10 +59,10 @@ export default function SpecificBook(props) {
                     <h1>Book</h1>
                     <div className="row mt-3">
                         <div className={`col-sm-5 col-md-4 d-flex align-items-center justify-content-center  ${styles.specificBook_image}`}>
-                            <img className="img-fluid" src={book.image || "./imageNotFound.png"}
+                            <img className="img-fluid" src={book.image || "../../imageNotFound.png"}
                                 alt="book" />
                         </div>
-                        <div className={`col-sm-5 col-md-4 mt-3 ${styles.specificBook_generalInfa}`}>
+                        <div className="col-sm-5 col-md-4 mt-3">
                             <h4 
                                 onMouseEnter={handleMouseEnter}
                                 onMouseLeave={handleMouseLeave}>
@@ -76,7 +72,7 @@ export default function SpecificBook(props) {
                             <h4>Book level: <span>{book.level}</span> </h4>
                             <h4>Book tags: <span>{book.tags.join(', ')}</span></h4>
                         </div>
-                        <div className={`col-sm-6 col-md-4 ${styles.specificBook_placeToBay}`}>
+                        <div className="col-sm-6 col-md-4">
                             <div>
                                 <h4>Price:
                                     <span id="price"> {book.price}$</span>
@@ -100,9 +96,7 @@ export default function SpecificBook(props) {
                         <p>{book.description}</p>
                     </div>
                 </div>
-
             </section>
-
         </>
     )
 }

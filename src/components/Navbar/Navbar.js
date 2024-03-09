@@ -2,8 +2,8 @@ import {useState, useEffect} from 'react';
 import { Link } from "react-router-dom";
 import { useUser } from '../../context/use-user';
 import { useBooks } from '../../context/use-books';
-import styles from './Navbar.module.scss';
 import { LocalStorageService } from "../../services/localStorage";
+import styles from './Navbar.module.scss';
 
 export default function Navbar() {
     const [ totalCount, setTotalCount ] = useState(0);
@@ -18,7 +18,6 @@ export default function Navbar() {
     useEffect(()=>{
         setTotalCount(addedBooks.reduce((acc, curr) => {return acc + curr.count}, 0));
         setIsEnlarged(true);
-
         setTimeout(() => {
             setIsEnlarged(false);
         }, 1000);
@@ -41,14 +40,12 @@ export default function Navbar() {
                 </Link>
                 <p>
                     <i className="fa-solid fa-user-large"></i>
-                    <span className={styles.userName}>{user}</span>
+                    <span>{user}</span>
                 </p>
                 <Link onClick={clean} to="/">
                     <i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i>
                 </Link>
             </div>
-
-
         </nav>
     )
 }

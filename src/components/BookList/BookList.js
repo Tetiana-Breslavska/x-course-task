@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-// import { useUser } from '../../context/use-user';
 import styles from './BookList.module.scss';
 import Navbar from '../Navbar/Navbar';
 import Book from '../Book/Book';
@@ -12,8 +11,6 @@ export default function BookList() {
     const [searchByBookName, setSearchByBookName] = useState('');
     const [filteredBooksByPrice, setFilteredBooksByPrice] = useState([]);
     const [filteredBooksGeneral, setFilteredBooksGeneral] = useState([]);
-
-    console.log(books);
 
     useEffect(() => {
         if (books && searchByPrice) {

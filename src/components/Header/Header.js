@@ -5,9 +5,7 @@ export default function Header() {
         <header className={styles.header}>
             <div className="container">
                 <p>X-course task/Tetiana Breslavska </p>
-                
             </div>
-
         </header>
     )
 }

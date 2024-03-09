@@ -2,7 +2,6 @@
 @import "./normalize.scss";
 @import "./var.scss";
 
-
 body, html {
     margin: 0;
     padding: 0;
@@ -11,8 +10,6 @@ body, html {
 
 body {
   font-family: $mainFont;
-
- 
 
   h1 {
     color: $brandColor;

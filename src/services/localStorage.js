@@ -3,13 +3,11 @@ const LS_KEYS = {
     LOGIN:'login',
     BOOKS: 'books',
     ADDEDBOOKS: 'addedBooks',
-    
 };
 
 class LocalStorageService {
     static get(key) {
         const value = window.localStorage.getItem(key);
-
         try {
             return JSON.parse(value);
         } catch {

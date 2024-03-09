@@ -11,11 +11,8 @@ import NotFoundPage from '../components/NotFoundPage/NotFoundPage';
 
 
 export default function MyRoutes() {
-
-
     const [login, setLogin] = useState(LocalStorageService.get(LS_KEYS.LOGIN) || false
     );
-
     useEffect(() => LocalStorageService.set(LS_KEYS.LOGIN, login), [login]);
 
     return (
@@ -33,7 +30,6 @@ export default function MyRoutes() {
                 </Route>
             </Routes>
         </LoginProvider>
-
     )
 }
 

@@ -1,11 +1,11 @@
 @import "../../styles/var.scss";
 
-.signin_content {
+.signin {
   flex: 9;
   padding: 20px 0 0;
   background-color: $blackColor;
 
-  .signin_content_hero {
+  .signin_hero {
     background-image: url(/images/holy-bible-with-rays-light-coming-out-ai-generative.jpg);
     background-size: 600px;
     height: 75vh;
@@ -36,10 +36,10 @@
       }
 
       button {
-        width: 100px;
+        width: 150px;
         border: 2px solid $brandColor;
         border-radius: 5px;
-        background-color: #faef8c;
+        background-color: $brandColor;
         text-align: center;
         margin: 0 auto;
         color: $blackColor;
@@ -51,11 +51,12 @@
     }
   }
   @media screen and (min-width: 800px) {
-    .signin_content_hero {
+    .signin_hero {
       background-size: 800px;
       height: 70vh;
     }
   }
+
   @media screen and (min-width: 1024px) {
     h1 {
       font-size: 95px;
@@ -65,15 +66,11 @@
       i {
         font-size: 60px;
       }
+
       label,
       button,
       input {
         font-size: 20px;
-      }
-      
-      button {
-        margin-top: 15px;
-        width: 200px;
       }
     }
   }
