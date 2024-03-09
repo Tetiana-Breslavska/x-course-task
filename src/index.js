@@ -9,7 +9,7 @@ import './styles/index.scss';
 const root = createRoot(document.getElementById('root'));
 root.render(
   <StrictMode>
-    <HashRouter basename={process.env.PUBLIC_URL} >
+    <HashRouter>
       <MyRoutes />
     </HashRouter>
   </StrictMode >
