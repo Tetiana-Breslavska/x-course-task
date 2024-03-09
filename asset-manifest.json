@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.6f9b3bb6.css",
-    "main.js": "/static/js/main.b2a3da07.js",
+    "main.js": "/static/js/main.1b8a21aa.js",
     "static/media/holy-bible-with-rays-light-coming-out-ai-generative.jpg": "/static/media/holy-bible-with-rays-light-coming-out-ai-generative.eb0f0bdf4dc5e5f7fb5a.jpg",
     "static/media/bookcase.png": "/static/media/bookcase.6e68fd6bdfd21ee76c37.png",
     "static/media/bookcase-dark.jpg": "/static/media/bookcase-dark.cf205754152c99ef6f54.jpg",
     "static/media/abstract-background-open-books-glare-of-light-and-bokeh_418128-463.jpg": "/static/media/abstract-background-open-books-glare-of-light-and-bokeh_418128-463.8a410cdab4eae1f8604a.jpg",
     "index.html": "/index.html",
     "main.6f9b3bb6.css.map": "/static/css/main.6f9b3bb6.css.map",
-    "main.b2a3da07.js.map": "/static/js/main.b2a3da07.js.map"
+    "main.1b8a21aa.js.map": "/static/js/main.1b8a21aa.js.map"
   },
   "entrypoints": [
     "static/css/main.6f9b3bb6.css",
-    "static/js/main.b2a3da07.js"
+    "static/js/main.1b8a21aa.js"
   ]
 }
