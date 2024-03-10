@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/x-course-task/static/css/main.0487f430.css",
-    "main.js": "/x-course-task/static/js/main.b7bcf678.js",
+    "main.css": "/x-course-task/static/css/main.89a3baf4.css",
+    "main.js": "/x-course-task/static/js/main.8e964cc3.js",
     "static/media/holy-bible-with-rays-light-coming-out-ai-generative.jpg": "/x-course-task/static/media/holy-bible-with-rays-light-coming-out-ai-generative.eb0f0bdf4dc5e5f7fb5a.jpg",
     "static/media/bookcase.png": "/x-course-task/static/media/bookcase.6e68fd6bdfd21ee76c37.png",
     "static/media/bookcase-dark.jpg": "/x-course-task/static/media/bookcase-dark.cf205754152c99ef6f54.jpg",
     "static/media/abstract-background-open-books-glare-of-light-and-bokeh_418128-463.jpg": "/x-course-task/static/media/abstract-background-open-books-glare-of-light-and-bokeh_418128-463.8a410cdab4eae1f8604a.jpg",
     "index.html": "/x-course-task/index.html",
-    "main.0487f430.css.map": "/x-course-task/static/css/main.0487f430.css.map",
-    "main.b7bcf678.js.map": "/x-course-task/static/js/main.b7bcf678.js.map"
+    "main.89a3baf4.css.map": "/x-course-task/static/css/main.89a3baf4.css.map",
+    "main.8e964cc3.js.map": "/x-course-task/static/js/main.8e964cc3.js.map"
   },
   "entrypoints": [
-    "static/css/main.0487f430.css",
-    "static/js/main.b7bcf678.js"
+    "static/css/main.89a3baf4.css",
+    "static/js/main.8e964cc3.js"
   ]
 }
