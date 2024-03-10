@@ -16,13 +16,16 @@
     span {
       font-weight: 400;
     }
+    
+    input, button {
+      width: 30px;
+      background-color: transparent;
+      border: 1px solid $blackColor;
+      border-radius: 4px;
+    }
   }
 
-  input{
-    background-color: transparent
-  }
-
-  .button{
+  .button {
     width: 70%;
     font-size: 25px;
     font-weight: 700;

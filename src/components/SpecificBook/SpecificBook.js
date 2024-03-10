@@ -38,7 +38,6 @@ export default function SpecificBook() {
         if (+count + 1 <= 42) {
             setCount(+count + 1)
         }
-
     }
 
     const handleButton = (event) => {
@@ -56,7 +55,7 @@ export default function SpecificBook() {
                 if (book.id === bookId) {
                     return {
                         ...book,
-                        count: currentCount <= 42 ? currentCount : 42,
+                        count: currentCount,
                     };
                 } else {
                     return { ...book };
@@ -93,7 +92,7 @@ export default function SpecificBook() {
                                 </h4>
                             </div>
                             <div>
-                                <h4>Count:
+                                <h4>Count: 
                                     <button data-testid='decreaseCount' onClick={handleDecrease}>-</button>
                                     <input data-testid='countInput' min={1} max={42} value={count} onChange={handleCountInput}/>
                                     <button data-testid='increaseCount' onClick={handleIncrease}>+</button>
