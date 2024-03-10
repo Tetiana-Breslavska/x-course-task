@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { debounce } from 'lodash';
 import styles from './BookList.module.scss';
 import Navbar from '../Navbar/Navbar';
 import Book from '../Book/Book';
@@ -33,8 +34,12 @@ export default function BookList() {
     }, [books, filteredBooksByPrice, searchByBookName, searchByPrice]);
 
 
+    const debouncedHandleInput = debounce((value) => {
+        setSearchByBookName(value);
+    }, 500);
+
     const handleInput = (event) => {
-        setSearchByBookName(event.target.value);
+        debouncedHandleInput(event.target.value);
     }
 
     const handleSelect = (event) => {

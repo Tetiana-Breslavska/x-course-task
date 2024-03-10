@@ -4,14 +4,15 @@ import { useBooks } from '../../context/use-books';
 import Navbar from '../Navbar/Navbar';
 import styles from './SpecificBook.module.scss';
 
-export default function SpecificBook(props) {
+export default function SpecificBook() {
     const { bookId } = useParams();
     const {books} = useBooks();
     const book = books.find((book) => +book.id === +bookId);
     const { addedBooks, setAddedBooks } = useBooks();
+    const addedBook = addedBooks.find((book) => +book.id === +bookId) || {};
     const bookShortName = book.title.length > 24 ? book.title.slice(0, 24) + '...' : book.title
     const [bookTitle, setBookTitle] = useState(bookShortName);
-    const [count, setCount] = useState(book.count || 0);
+    const [count, setCount] = useState(addedBook.count || 0);
 
     const handleMouseEnter = (event) => {
         setBookTitle(book.title);
@@ -25,6 +26,19 @@ export default function SpecificBook(props) {
         if (event.target.value >= 0 && event.target.value <= 42) {
             setCount(event.target.value);
         }
+    }
+
+    const handleDecrease = () =>{
+        if (+count - 1 >= 0){
+            setCount(+count - 1)
+        }
+    }
+
+    const handleIncrease = () => {
+        if (+count + 1 <= 42) {
+            setCount(+count + 1)
+        }
+
     }
 
     const handleButton = (event) => {
@@ -80,12 +94,14 @@ export default function SpecificBook(props) {
                             </div>
                             <div>
                                 <h4>Count:
-                                    <input id="count" type="number" min={1} max={42} value={count} onChange={handleCountInput} inputMode="numeric" />
+                                    <button data-testid='decreaseCount' onClick={handleDecrease}>-</button>
+                                    <input data-testid='countInput' min={1} max={42} value={count} onChange={handleCountInput}/>
+                                    <button data-testid='increaseCount' onClick={handleIncrease}>+</button>
                                 </h4>
                             </div>
                             <div>
                                 <h4>Total price:
-                                    <span id="totalPrice"> {(count * book.price).toFixed(2)}$</span>
+                                    <span data-testid='totalPrice'> {(count * book.price).toFixed(2)}$</span>
                                 </h4>
                             </div>
                             <button className={`btn btn-outline-danger ${styles.button}`} onClick={handleButton} book-id={book.id} disabled={+count === 0}>Add to cart</button>
