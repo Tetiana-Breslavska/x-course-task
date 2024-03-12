@@ -1,12 +1,17 @@
 @import "../../styles/var.scss";
 
 .navbar {
+  position: fixed;
+  width: 100%;
+  top: 20px;
+  z-index: 100;
   flex: 0.25;
   background-color: $brandColor;
   color: $blackColor;
   display: flex;
   justify-content: flex-end;
-  font-size: 22px;
+  font-size: 25px;
+  white-space: nowrap;
 
   .cart_icon {
     position: relative;
@@ -23,6 +28,10 @@
     }
   }
 
+  .user {
+    font-size: 18px;
+  }
+
   p,
   a {
     margin: 0 15px;
@@ -36,6 +45,9 @@
         left: 12px;
         top: 3px;
       }
+    }
+    .user {
+      font-size: 25px;
     }
   }
 }

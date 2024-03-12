@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { debounce } from 'lodash';
-import styles from './BookList.module.scss';
+import { useBooks } from '../../context/use-books';
 import Navbar from '../Navbar/Navbar';
 import Book from '../Book/Book';
-import { useBooks } from '../../context/use-books';
+import styles from './BookList.module.scss';
 
 
 export default function BookList() {
@@ -35,7 +35,7 @@ export default function BookList() {
 
 
     const debouncedHandleInput = debounce((value) => {
-        setSearchByBookName(value);
+        setSearchByBookName(value.toLowerCase());
     }, 500);
 
     const handleInput = (event) => {
@@ -65,7 +65,6 @@ export default function BookList() {
                                 <option value="[30]">30$ and more</option>
                             </select>
                         </label>
-
                     </form>
                     <section>
                         <h1>All books</h1>
@@ -79,7 +78,7 @@ export default function BookList() {
                                             </div>
                                         </div>
                                     );
-                                }) : ""
+                                }) : "is loaded..."
                                 }
                             </div>
                         </div>

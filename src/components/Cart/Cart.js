@@ -34,6 +34,7 @@ export default function Cart() {
         LocalStorageService.remove(LS_KEYS.ADDEDBOOKS, addedBooks);
         setAddedBooks([]);
     }
+    
     return (
         <>
             <Navbar />

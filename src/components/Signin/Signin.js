@@ -12,8 +12,6 @@ export default function Signin() {
         setLogin(false)
     }
 
-    // "homepage": "https://tetiana-breslavska.github.io/x-course-task",
-
     function handleChange(event) {
         setStyleButton({ opacity: 0.5 });
         setActiveButton(false);

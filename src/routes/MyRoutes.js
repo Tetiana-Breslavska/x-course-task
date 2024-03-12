@@ -10,7 +10,6 @@ import Cart from '../components/Cart/Cart';
 import NotFoundPage from '../components/NotFoundPage/NotFoundPage';
 import ProtectedRoute from './ProtectedRoute';
 
-
 export default function MyRoutes() {
     const [login, setLogin] = useState(LocalStorageService.get(LS_KEYS.LOGIN) || false
     );
@@ -32,7 +31,6 @@ export default function MyRoutes() {
                     <Route path='*' element={<NotFoundPage />} />
                 </Route>
             </Routes>
-
         </LoginProvider>
     )
 }

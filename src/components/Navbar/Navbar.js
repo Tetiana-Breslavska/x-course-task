@@ -9,18 +9,18 @@ export default function Navbar() {
     const [ totalCount, setTotalCount ] = useState(0);
     const { user, setUser } = useUser();
     const { addedBooks } = useBooks();
-    const [isEnlarged, setIsEnlarged] = useState(false);
+    const [isMarked, setIsMarked] = useState(false);
     const style = {
-        fontSize: isEnlarged ? '16px' : '', 
-        transition: 'font-size 0.5s', 
+        color: isMarked ? '#dc3545' : '',
+        transition: '0.2s', 
     };
 
     useEffect(()=>{
         setTotalCount(addedBooks.reduce((acc, curr) => {return acc + curr.count}, 0));
-        setIsEnlarged(true);
+        setIsMarked(true);
         setTimeout(() => {
-            setIsEnlarged(false);
-        }, 1000);
+            setIsMarked(false);
+        }, 200);
     }, [addedBooks])
 
     const clean = () => {
@@ -35,12 +35,12 @@ export default function Navbar() {
                     <i class="fa-solid fa-book"></i>
                 </Link>
                 <Link className={styles.cart_icon} to="/cart">
-                    <i className="fa-solid fa-cart-shopping"></i>
-                    <span style={style} className={styles.cart_counter} >{totalCount}</span>
+                    <i style={style}  className="fa-solid fa-cart-shopping"></i>
+                    <span  className={styles.cart_counter} >{totalCount}</span>
                 </Link>
                 <p>
                     <i className="fa-solid fa-user-large"></i>
-                    <span>{user}</span>
+                    <span className={styles.user}>{user}</span>
                 </p>
                 <Link onClick={clean} to="/">
                     <i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i>

@@ -6,6 +6,7 @@
   background-size: contain;
   min-height: 700px;
   color: $brandColor;
+  padding-top: 70px;
   
   label,
   select {
@@ -19,6 +20,7 @@
     color: $blackColor;
     margin: 10px;
   }
+  
   form {
     margin-bottom: 30px;
   }
