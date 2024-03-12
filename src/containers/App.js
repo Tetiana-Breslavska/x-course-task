@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { Outlet } from "react-router-dom";
 import { UserProvider } from '../context/use-user';
 import { BooksProvider } from '../context/use-books';
 import { LocalStorageService, LS_KEYS } from '../services/localStorage';
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer';
+import NotFoundPage from '../components/NotFoundPage/NotFoundPage';
 import styles from './App.module.scss';
 
 
@@ -25,22 +27,28 @@ function App() {
   }, []);
 
   return (
-    <UserProvider value={{
-      user,
-      setUser,
-    }}>
-      <BooksProvider value={{
-        books,
-        addedBooks,
-        setAddedBooks
+    <ErrorBoundary
+      fallback={
+        <NotFoundPage />
+      }
+    >
+      <UserProvider value={{
+        user,
+        setUser,
       }}>
-        <div className={styles.app}>
-          <Header />
-          <Outlet />
-          <Footer />
-        </div>
-      </BooksProvider>
-    </UserProvider>
+        <BooksProvider value={{
+          books,
+          addedBooks,
+          setAddedBooks
+        }}>
+          <div className={styles.app}>
+            <Header />
+            <Outlet />
+            <Footer />
+          </div>
+        </BooksProvider>
+      </UserProvider>
+    </ErrorBoundary>
   );
 }
 

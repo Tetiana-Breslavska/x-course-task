@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useBooks } from '../../context/use-books';
 import Navbar from '../Navbar/Navbar';
@@ -10,7 +10,7 @@ export default function SpecificBook() {
     const book = books.find((book) => +book.id === +bookId);
     const { addedBooks, setAddedBooks } = useBooks();
     const addedBook = addedBooks.find((book) => +book.id === +bookId) || {};
-    const bookShortName = book.title.length > 24 ? book.title.slice(0, 24) + '...' : book.title
+    const bookShortName = book && book.title.length > 24 ? book.title.slice(0, 24) + '...' : book.title;
     const [bookTitle, setBookTitle] = useState(bookShortName);
     const [count, setCount] = useState(addedBook.count || 0);
 
