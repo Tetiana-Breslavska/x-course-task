@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Outlet } from "react-router-dom";
-import { UserProvider } from '../context/use-user';
 import { BooksProvider } from '../context/use-books';
 import { LocalStorageService, LS_KEYS } from '../services/localStorage';
 import Header from '../components/Header/Header'
@@ -11,10 +10,8 @@ import styles from './App.module.scss';
 
 
 function App() {
-  const [user, setUser] = useState(LocalStorageService.get(LS_KEYS.USER) || '');
   const [addedBooks, setAddedBooks] = useState(LocalStorageService.get(LS_KEYS.ADDEDBOOKS) || []);
   const [books, setBooks] = useState(LocalStorageService.get(LS_KEYS.BOOKS) || []);
-  useEffect(() => LocalStorageService.set(LS_KEYS.USER, user), [user]);
   useEffect(() => LocalStorageService.set(LS_KEYS.ADDEDBOOKS, addedBooks), [addedBooks]);
   useEffect(() => LocalStorageService.set(LS_KEYS.BOOKS, books), [books]);
 
@@ -32,11 +29,7 @@ function App() {
         <NotFoundPage />
       }
     >
-      <UserProvider value={{
-        user,
-        setUser,
-      }}>
-        <BooksProvider value={{
+      <BooksProvider value={{
           books,
           addedBooks,
           setAddedBooks
@@ -47,7 +40,6 @@ function App() {
             <Footer />
           </div>
         </BooksProvider>
-      </UserProvider>
     </ErrorBoundary>
   );
 }

@@ -1,25 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/use-user';
-import { useLogin } from '../../context/use-login';
 import styles from './Signin.module.scss';
 
 export default function Signin() {
     const {user, setUser} = useUser();
-    const {setLogin} = useLogin();
     const [activeButton, setActiveButton] = useState(false);
     const [styleButton, setStyleButton] = useState({opacity: 0.5});
-    // if (user === "") {
-    //     setLogin(false)
-    // }
-
-    useEffect(() => {
-        if (user === "") {
-            setLogin(false);
-        } else {
-            setLogin(true);
-        }
-    }, [user]);
-
+    const navigate = useNavigate();
 
     function handleChange(event) {
         setStyleButton({ opacity: 0.5 });
@@ -28,20 +16,20 @@ export default function Signin() {
         setUser(userName);
         if ((event.target.value).length >= 4 && (event.target.value).length <= 16) {
             setActiveButton(true);
-            setStyleButton({opacity: 1});
+            setStyleButton({ opacity: 1 });
         }
     }
 
     function handleSubmit(event) {
-        // event.preventDefault();
-        // setLogin(true);
+        event.preventDefault();
+        navigate('/bookList');
     }
 
     return (
         <div className={styles.signin}>
             <h1>BookLand</h1>
             <div className={styles.signin_hero}>
-                <form className={styles.signin_form} onSubmit={handleSubmit} action = '#/bookList'>
+                <form className={styles.signin_form} onSubmit={handleSubmit}>
                     <i className="fa-solid fa-user-large"></i>
                     <label htmlFor="username">Username:</label>
                     <input id="username" type="text" name="username" placeholder="type your name" value={user} onChange=

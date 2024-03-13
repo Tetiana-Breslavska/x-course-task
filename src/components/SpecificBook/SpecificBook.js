@@ -72,8 +72,7 @@ export default function SpecificBook() {
                     <h1>Book</h1>
                     <div className="row mt-3">
                         <div className={`col-sm-5 col-md-4 d-flex align-items-center justify-content-center  ${styles.specificBook_image}`}>
-                            <img className="img-fluid" src={book.image || "../../imageNotFound.png"}
-                                alt="book" />
+                            <img className="img-fluid" src={book.image || `${process.env.PUBLIC_URL}/imageNotFound.png`} alt="book" />
                         </div>
                         <div className="col-sm-5 col-md-4 mt-3">
                             <h4 

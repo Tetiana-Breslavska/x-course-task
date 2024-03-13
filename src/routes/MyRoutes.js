@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { LoginProvider } from '../context/use-login';
+import { UserProvider } from '../context/use-user';
 import { LocalStorageService, LS_KEYS } from '../services/localStorage';
 import App from '../containers/App';
 import Signin from '../components/Signin/Signin';
@@ -11,19 +11,18 @@ import NotFoundPage from '../components/NotFoundPage/NotFoundPage';
 import ProtectedRoute from './ProtectedRoute';
 
 export default function MyRoutes() {
-    const [login, setLogin] = useState(LocalStorageService.get(LS_KEYS.LOGIN) || false
-    );
-    useEffect(() => LocalStorageService.set(LS_KEYS.LOGIN, login), [login]);
+    const [user, setUser] = useState(LocalStorageService.get(LS_KEYS.USER) || '');
+    useEffect(() => LocalStorageService.set(LS_KEYS.USER, user), [user]);
 
     return (
-        <LoginProvider value={{
-            login,
-            setLogin,
+        <UserProvider value={{
+            user,
+            setUser,
         }}>
             <Routes >
                 <Route path='/' element={<App />}>
                     <Route index element={<Signin />} />
-                    <Route element={<ProtectedRoute login={login}/>}>
+                    <Route element={<ProtectedRoute user={user}/>}>
                         <Route path='/bookList' element= {<BookList />} />
                         <Route path='/specificBook/:bookId' element={<SpecificBook />} />
                         <Route path='/cart' element={ <Cart /> } />
@@ -31,7 +30,7 @@ export default function MyRoutes() {
                     <Route path='*' element={<NotFoundPage />} />
                 </Route>
             </Routes>
-        </LoginProvider>
+        </UserProvider>
     )
 }
 

@@ -1,8 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-const ProtectedRoute = ({ login }) => {
-    console.log(login);
-    if (!login) {
+const ProtectedRoute = ({ user }) => {
+    if (!user) {
         return <Navigate to="/" replace />;
     }
     return <Outlet/>;

@@ -8,7 +8,7 @@ import styles from './Navbar.module.scss';
 export default function Navbar() {
     const [ totalCount, setTotalCount ] = useState(0);
     const { user, setUser } = useUser();
-    const { addedBooks } = useBooks();
+    const { addedBooks, setAddedBooks } = useBooks();
     const [isMarked, setIsMarked] = useState(false);
     const style = {
         color: isMarked ? '#dc3545' : '',
@@ -26,6 +26,7 @@ export default function Navbar() {
     const clean = () => {
         LocalStorageService.removeAll();
         setUser('');
+        setAddedBooks([]);
     };
 
     return (
