@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useUser } from '../../context/use-user';
 import { useLogin } from '../../context/use-login';
 import styles from './Signin.module.scss';
@@ -8,9 +8,18 @@ export default function Signin() {
     const {setLogin} = useLogin();
     const [activeButton, setActiveButton] = useState(false);
     const [styleButton, setStyleButton] = useState({opacity: 0.5});
-    if (user === "") {
-        setLogin(false)
-    }
+    // if (user === "") {
+    //     setLogin(false)
+    // }
+
+    useEffect(() => {
+        if (user === "") {
+            setLogin(false);
+        } else {
+            setLogin(true);
+        }
+    }, [user]);
+
 
     function handleChange(event) {
         setStyleButton({ opacity: 0.5 });
@@ -24,7 +33,8 @@ export default function Signin() {
     }
 
     function handleSubmit(event) {
-        setLogin(true);
+        // event.preventDefault();
+        // setLogin(true);
     }
 
     return (

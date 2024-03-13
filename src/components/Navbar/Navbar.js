@@ -32,7 +32,7 @@ export default function Navbar() {
         <nav className={styles.navbar}>
             <div className='container d-flex justify-content-end'>
                 <Link to="/bookList">
-                    <i class="fa-solid fa-book"></i>
+                    <i className="fa-solid fa-book"></i>
                 </Link>
                 <Link className={styles.cart_icon} to="/cart">
                     <i style={style}  className="fa-solid fa-cart-shopping"></i>
@@ -43,7 +43,7 @@ export default function Navbar() {
                     <span className={styles.user}>{user}</span>
                 </p>
                 <Link onClick={clean} to="/">
-                    <i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i>
+                    <i className="fa-solid fa-person-walking-dashed-line-arrow-right"></i>
                 </Link>
             </div>
         </nav>

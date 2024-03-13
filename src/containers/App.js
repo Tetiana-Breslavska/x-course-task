@@ -19,7 +19,7 @@ function App() {
   useEffect(() => LocalStorageService.set(LS_KEYS.BOOKS, books), [books]);
 
   useEffect(() => {
-    fetch('./books.json')
+    fetch(`${process.env.PUBLIC_URL}/books.json`)
       .then(res => res.json())
       .then(data => setBooks(data.books))
       .catch(err => console.log('error: ', err)

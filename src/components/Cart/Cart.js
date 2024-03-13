@@ -54,8 +54,8 @@ export default function Cart() {
                                 const priceForItem = +(book.count * book.price).toFixed(2);
                                 totalPrice = +(totalPrice + priceForItem).toFixed(2);
                                 return (
-                                    <div className={`row p-2 rounded mt-5 ${styles.cart_bookWrapper}`}>
-                                        <div className="col-12 col-sm-3 col-md-3" key={book.id}>
+                                    <div className={`row p-2 rounded mt-5 ${styles.cart_bookWrapper}`} key={book.id}>
+                                        <div className="col-12 col-sm-3 col-md-3" >
                                             <BookInCart book={book} />
                                         </div>
                                         <div className={`col-12 col-sm-3 col-md-3  ${styles.mainBookInfa}`}>
