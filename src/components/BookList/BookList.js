@@ -5,7 +5,6 @@ import Navbar from '../Navbar/Navbar';
 import Book from '../Book/Book';
 import styles from './BookList.module.scss';
 
-
 export default function BookList() {
     const {books} = useBooks();
     const [searchByPrice, setSearchByPrice] = useState('');

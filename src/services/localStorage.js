@@ -1,6 +1,5 @@
 const LS_KEYS = {
     USER: 'user',
-    LOGIN:'login',
     BOOKS: 'books',
     ADDEDBOOKS: 'addedBooks',
 };
