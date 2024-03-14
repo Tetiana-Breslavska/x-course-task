@@ -14,9 +14,7 @@ export default function Book({ book }) {
                     <br />
                     <span>{book.price}$</span>
                 </p>
-                <div className={`btn btn-outline-danger ${styles.button}`}>
-                    <Link to={`/specificBook/${book.id}`} >View</Link>
-                </div>
+                    <Link className={`btn btn-outline-danger ${styles.button}`} to={`/specificBook/${book.id}`} >View</Link>                
             </div>
         </div>
     )
